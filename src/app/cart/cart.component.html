@@ -1,0 +1,71 @@
+<div id="cart">
+  <div class="row justify-center">
+    <div class="list-card-header col-10">
+      <div class="row align-center h-100">
+        <div class="col-lg-1 flex align-center justify-center">
+          <span>Product Image</span>
+        </div>
+        <div class="col-lg-7 flex align-center">
+          <span>Product Name</span>
+        </div>
+        <div class="col-lg-2 flex justify-center">
+          <span>Quantity</span>
+        </div>
+        <div class="col-lg-2 flex align-center justify-center">
+          <span> Remove Item </span>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let product of cartItems; index as i" class="col-10 list-card mb-2">
+      <div class="row align-center h-100">
+        <div class="col-lg-1 flex align-center justify-center">
+          <img class="product-img" [src]="product.product.product_image" height="40px" alt="">
+        </div>
+        <div class="col-lg-7 flex align-center">
+          {{ product.product.product_name }}
+        </div>
+        <div class="col-lg-2">
+          <div style="height: 40px" class="flex align-center justify-center">
+            <button class="inc-btn mr-2" (click)="onDecrement(product.product)">-</button>
+            {{ product.quantity }}
+            <button class="ml-2 inc-btn" (click)="onIncrement(product.product)">+</button>
+          </div>
+        </div>
+        <div class="col-lg-2 flex align-center justify-center">
+          <button class="remove-btn" (click)="removeItem(i)"> Remove </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="cartItems.length < 1">
+      <div class="row justify-center mt-5">
+        <h4>No Items in the Cart</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="checkout-btn-div">
+  <h5 style="display: inline" class="mr-4">Total Amount : &#8377; {{totalAmount}}</h5>
+  <button class="checkout-btn" (click)="totalAmount>0 ? checkouting = !checkouting : window.alert('Please add items to cart!')"> CHECKOUT </button>
+</div>
+
+<div *ngIf="checkouting" class="background-dark"></div>
+<div *ngIf="checkouting" class="checkout-modal">
+  <div class="order-modal">
+
+    <div class="row mt-3">
+      <div class="col-lg-12 flex mb-2">
+        <div class="col-lg-4"><label class="modal-label">Name of the Receiver</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="receiverName" class="modal-input" type="text" placeholder="Name" /></div>
+      </div>
+      <div class="col-lg-12 mb-4 flex">
+        <div class="col-lg-4"><label class="modal-label">Shipping Address</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="receiverAddress" class="modal-input" type="text" placeholder="Address" /></div>
+      </div>
+      <div class="col-lg-12 flex justify-center">
+        <button class="place-order-btn" (click)="onPlaceOrder()">Place Order</button>
+      </div>
+    </div>
+    <span class="close-modal-btn" (click)="checkouting = !checkouting">X</span>
+  </div>
+</div>

@@ -1,0 +1,164 @@
+#nav{
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  background-color: #FFF;
+  padding-bottom: 1%;
+}
+
+#nav::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background-color: #D5DBDB;
+  z-index: 5;
+  bottom:0;
+}
+
+.company-logo img{
+  width: 76.5px;
+}
+
+.brand-link{
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.brand-link a {
+  color: #879596;
+}
+
+#follow-btn{
+  font-size: 13px;
+  border-radius: 3px;
+  padding: 6px 9px;
+  width: 92px !important;
+  border: 1px solid #879596;
+  background-color: transparent;
+}
+#follow-btn:hover{
+  border-color: #D5D9D9;
+  /*background-color: #D5D9D9;*/
+}
+
+.log-in{
+  position: relative;
+  /*margin-top: -45px;*/
+}
+
+.active-nav{
+  position: relative;
+  transition: all 1s;
+}
+
+.active-nav::before{
+  content: "";
+  width: 100%;
+  background-color:#000000AA;
+  position: absolute;
+  height: 2px;
+  bottom:-5%;
+  /*transition: all 1s;*/
+}
+
+/* LOGIN CARD */
+.background-dark{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  opacity:25%;
+  height: 100vh;
+  width: 100vw;
+  z-index: 3;
+  overflow-x: hidden;
+}
+
+.login-modal{
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  z-index: 4;
+  backdrop-filter: blur(4px);
+}
+
+.login-card{
+  width: min(500px, calc(100vw - 10px));
+  padding: 50px 30px;
+  background-color: #EEEEEE;
+  /*backdrop-filter: none;*/
+  border-radius: 10px;
+  /*padding: 24px 0;*/
+  position: relative;
+
+}
+
+.close-modal-btn{
+  position: absolute;
+  top: 8%;
+  right: 5%;
+}
+
+.admin-login-btn{
+  position: absolute;
+  top: 7%;
+  right: 15%;
+  /*text-decoration: underline;*/
+  background-color: #00000022;
+  color: #EEE;
+  /*height: 32px;*/
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 16px;
+  transition: all 1s;
+}
+
+.admin-login-btn:hover{
+  background-color: #00000055;
+}
+
+.change-login-btn{
+  /*text-decoration: underline;*/
+  background-color: #00000022;
+  color: #EEE;
+  /*height: 32px;*/
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 16px;
+  transition: all 1s;
+}
+
+.change-login-btn:hover{
+  background-color: #00000055;
+}
+
+.modal-label{
+  font-size: 12px;
+}
+
+.modal-input{
+  font-size: 12px;
+  outline:none;
+  border:2px solid #00000022;
+  background-color: #FFF;
+  height: 32px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 0 20px;
+}
+
+.login-btn{
+  height: 32px;
+  border-radius: 16px;
+  background-color: #FFBB00AA;
+  border:none;
+  padding: 0 20px;
+}
+
+/*.switch-mode-btn{*/
+/*  color: #EEE;*/
+/*}*/
+
+

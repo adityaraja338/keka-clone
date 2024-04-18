@@ -1,0 +1,15 @@
+#performance {
+    padding-top: 10% !important;
+}
+
+.card-content{
+    margin: 8px;
+    padding: 16px 28px;
+    background-color: #00000005;
+    border: 2px solid #00000022;
+    border-radius: 10px;
+}
+
+.card-content p{
+    font-size: 12px;
+}

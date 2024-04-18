@@ -1,0 +1,42 @@
+<div id="performance">
+  <div class="cards row">
+    <div class="card col-lg-3">
+        <div class="card-content">
+            <h4>Most Active User</h4>
+            <p>User Name : {{ mostActiveUser?.user?.user_name || '-' }}</p>
+            <p>User Id : {{ mostActiveUser?.user?.user_id || '-' }}</p>
+            <p>Orders Placed : {{ mostActiveUser?.no_of_orders || '-' }}</p>
+        </div>
+    </div>
+    <div class="card col-lg-3">
+        <div class="card-content">
+            <h4>Best Selling Product</h4>
+            <p>Product Name : {{ bestSellingProduct?.product?.product_name || '-' }}</p>
+            <p>Product Id : {{ bestSellingProduct?.product?.product_id || '-' }}</p>
+            <p>Total Sales : {{ bestSellingProduct?.product?.total_sales || '-' }}</p>
+        </div>
+    </div>
+    <div class="col-lg-9 my-4">
+        <hr>
+    </div>
+    <div class="col-lg-3"></div>
+    <div class="card col-lg-3">
+        <div class="card-content">
+            <h4>Total no. of Users</h4>
+            <p>{{ totalUsers?.count || '-' }}</p>
+        </div>
+    </div>
+    <div class="card col-lg-3">
+        <div class="card-content">
+            <h4>Total no. of Products</h4>
+            <p>{{ totalProducts?.count || '-' }}</p>
+        </div>
+    </div>
+    <div class="card col-lg-3">
+        <div class="card-content">
+            <h4>Total no. of Orders</h4>
+            <p>{{ totalOrders?.count || '-' }}</p>
+        </div>
+    </div>
+  </div>
+</div>

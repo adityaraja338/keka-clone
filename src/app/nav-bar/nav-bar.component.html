@@ -1,0 +1,87 @@
+<div id="nav" class="row justify-between align-center pt-2 mb-4">
+  <div class="col-lg-8">
+    <div class="row">
+      <div class="company-logo ml-3 mr-3">
+        <img src="assets/company-logo.jpeg" alt="">
+      </div>
+      <div class="flex-column row justify-center">
+        <div class="brand-link"><a href="#">KEKA® The Heritage Socks Brand</a></div>
+        <div class="flex align-center">
+<!--          <button class="mr-4" id="follow-btn">+ Follow</button>-->
+          <span [class]="globalService.currentActiveNav == 'home' ? 'active-nav': ''" class="mr-4 cursor-pointer" routerLink="/home">HOME</span>
+          <span [class]="globalService.currentActiveNav == 'products' ? 'active-nav': ''" class="mr-4 cursor-pointer" routerLink="/products">PRODUCTS</span>
+          <span *ngIf="!adminService.isAdminLoggedIn" [class]="globalService.currentActiveNav == 'cart' ? 'active-nav': ''" class="mr-4 cursor-pointer" routerLink="/cart">CART</span>
+          <span *ngIf="adminService.isAdminLoggedIn" [class]="globalService.currentActiveNav == 'performance' ? 'active-nav': ''" class="mr-4 cursor-pointer" routerLink="/performance">PERFORMANCE</span>
+          <span [class]="globalService.currentActiveNav == 'orders' ? 'active-nav': ''" class="cursor-pointer" routerLink="/orders">ORDERS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 flex justify-end">
+    <div class="log-in mr-5">
+      <span *ngIf="!globalService.userInfo" class="cursor-pointer" (click)="logginIn=!logginIn">LOGIN / SIGNUP</span>
+      <span *ngIf="globalService.userInfo" class="cursor-pointer">Welcome, {{globalService.userInfo.user_name || globalService.userInfo.admin_name || '-'}}</span>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="logginIn" class="background-dark"></div>
+<div *ngIf="logginIn" class="login-modal">
+  <div class="login-card">
+    <div *ngIf="loginMode=='login'" class="row mt-3">
+      <div class="col-lg-12 flex mb-2">
+        <div class="col-lg-4"><label class="modal-label">Email</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="logInEmail" class="modal-input" type="email" placeholder="Email" /></div>
+      </div>
+      <div class="col-lg-12 mb-4 flex">
+        <div class="col-lg-4"><label class="modal-label">Password</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="logInPassword" class="modal-input" type="password" placeholder="Password" /></div>
+      </div>
+      <div class="col-lg-12 flex-column align-center justify-center">
+        <button class="login-btn mb-2" (click)="userLogIn()">LOGIN</button>
+        <span class="switch-mode-btn change-login-btn cursor-pointer" (click)="loginMode = 'signup'">SIGN UP</span>
+      </div>
+    </div>
+    <div *ngIf="loginMode=='signup'" class="row mt-3">
+      <div class="col-lg-12 flex mb-2">
+        <div class="col-lg-4"><label class="modal-label">Name</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="signUpName" class="modal-input" type="text" placeholder="Name" maxlength="40" /></div>
+      </div>
+      <div class="col-lg-12 mb-2 flex">
+        <div class="col-lg-4"><label class="modal-label">Email</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="signUpEmail" class="modal-input" type="email" placeholder="Email" maxlength="50" /></div>
+      </div>
+      <div class="col-lg-12 mb-2 flex">
+        <div class="col-lg-4"><label class="modal-label">Password</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="signUpPassword" class="modal-input" type="password" placeholder="Password" maxlength="25" /></div>
+      </div>
+      <div class="col-lg-12 mb-4 flex">
+        <div class="col-lg-4"><label class="modal-label">Phone</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="signUpPhone" class="modal-input" type="text" placeholder="Phone" maxlength="10" /></div>
+      </div>
+      <div class="col-lg-12 flex-column align-center justify-center">
+        <button class="login-btn mb-2" (click)="userSignUp()">SIGN UP</button>
+        <span class="switch-mode-btn change-login-btn cursor-pointer" (click)="loginMode = 'login'">LOG IN</span>
+      </div>
+    </div>
+    <div *ngIf="loginMode=='admin-login'" class="row mt-3">
+      <div class="col-lg-12 flex mb-2">
+        <div class="col-lg-4"><label class="modal-label">Email</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="logInEmail" class="modal-input" type="email" placeholder="Email" /></div>
+      </div>
+      <div class="col-lg-12 mb-4 flex">
+        <div class="col-lg-4"><label class="modal-label">Password</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="logInPassword" class="modal-input" type="password" placeholder="Password" /></div>
+      </div>
+      <div class="col-lg-12 flex-column align-center justify-center">
+        <button class="login-btn mb-2" (click)="adminLogin()">LOGIN</button>
+        <div class="flex">
+          <span class="switch-mode-btn cursor-pointer change-login-btn mr-2" (click)="loginMode = 'login'">USER LOGIN</span>
+          <span class="switch-mode-btn cursor-pointer change-login-btn " (click)="loginMode = 'signup'">USER SIGN UP</span>
+        </div>
+      </div>
+    </div>
+    <span *ngIf="loginMode != 'admin-login'" class="cursor-pointer admin-login-btn" (click)="loginMode = 'admin-login'">ADMIN LOGIN</span>
+    <span class="cursor-pointer close-modal-btn" (click)="logginIn = !logginIn">X</span>
+  </div>
+</div>

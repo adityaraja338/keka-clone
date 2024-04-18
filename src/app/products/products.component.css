@@ -1,0 +1,117 @@
+#products{
+  padding-top: 10% !important;
+}
+
+.card{
+  background-color: #00000011;
+  backdrop-filter: blur(4px);
+  padding: 20px;
+  border:2px solid #00000022;
+  border-radius: 10px;
+}
+
+.card img{
+  border-radius: 6px;
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+
+.prod-desc{
+  font-size: 10px;
+}
+
+.add-cart-btn{
+  height:32px;
+  font-size: 12px;
+  /*aspect-ratio: 1/1;*/
+  border-radius: 16px;
+  background-color: #FFF;
+  border:2px solid #00000022;
+  padding: 0 20px;
+}
+
+.inc-btn {
+  width: 42px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: #FFF;
+  border:2px solid #00000022;
+}
+
+
+/*Admin Access*/
+.add-product-btn-div{
+  position: fixed;
+  bottom: 5%;
+  left:50%;
+  transform: translateX(-50%);
+}
+
+.add-product-btn{
+  height: 32px;
+  padding: 0 16px;
+  background-color: #FFBB00AA;
+  /*color: #FFF;*/
+  border: none;
+  outline: none;
+  border-radius: 16px;
+}
+
+/*Add Product*/
+.background-dark{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  opacity:20%;
+  height: 100vh;
+  width: 100vw;
+  z-index: 3;
+}
+
+.add-product-modal{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  z-index: 4;
+}
+
+.product-modal{
+  width:500px;
+  /*height: 100px;*/
+  background-color: #EEE;
+  border-radius: 10px;
+  padding: 24px 0;
+  position: relative;
+}
+
+.close-modal-btn{
+  position: absolute;
+  top: 8%;
+  right: 5%;
+}
+
+.modal-label{
+  font-size: 12px;
+}
+
+.modal-input{
+  font-size: 12px;
+  outline:none;
+  border:2px solid #00000022;
+  background-color: #FFF;
+  height: 32px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 0 20px;
+}
+
+.add-product-modal-btn{
+  height: 32px;
+  border-radius: 16px;
+  background-color: #FFBB00AA;
+  border:none;
+  padding: 0 20px;
+}

@@ -1,0 +1,56 @@
+<div id="products" class="row">
+  <div *ngFor="let product of products" class="col-lg-2">
+    <div class="card mb-4">
+      <div class="flex-column row justify-content-lg-around">
+        <img class="mb-2" [src]="product?.product_image" alt="">
+        <div class="flex w-100 justify-between px-2">
+          <h5>{{product?.product_name}}</h5>
+          <h5>&#8377;{{product?.product_price}}</h5>
+        </div>
+        <p class="prod-desc pl-2 mb-2">{{product?.product_desc}}</p>
+        <div *ngIf="!adminAuth.checkAdminLoggedIn()" class="flex justify-center">
+          <button class="add-cart-btn" *ngIf="cartProductIds?.indexOf(product.product_id) == -1; else quantityAdjust" (click)="onAddToCart(product)">Add To Cart</button>
+          <ng-template #quantityAdjust>
+            <div style="height: 40px" class="flex align-center">
+              <button class="inc-btn mr-2" (click)="onDecrement(product)">-</button>
+              {{ cartItems[cartProductIds.indexOf(product.product_id)].quantity }}
+              <button class="ml-2 inc-btn" (click)="onIncrement(product)">+</button>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="add-product-btn-div" *ngIf="adminAuth.checkAdminLoggedIn()">
+  <button class="add-product-btn" (click)="addingProduct = true"> ADD PRODUCT </button>
+</div>
+
+<div *ngIf="addingProduct" class="background-dark"></div>
+<div *ngIf="addingProduct" class="add-product-modal">
+  <div class="product-modal">
+    <div class="row mt-4">
+      <div class="col-lg-12 flex mb-2 mt-2">
+        <div class="col-lg-4"><label class="modal-label">Product Name</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="productName" class="modal-input" type="text" placeholder="Name" /></div>
+      </div>
+      <div class="col-lg-12 mb-2 flex">
+        <div class="col-lg-4"><label class="modal-label">Product Price</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="productPrice" class="modal-input" type="text" placeholder="Price" /></div>
+      </div>
+      <div class="col-lg-12 mb-2 flex">
+        <div class="col-lg-4"><label class="modal-label">Description</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="productDesc" class="modal-input" type="text" placeholder="Description" /></div>
+      </div>
+      <div class="col-lg-12 mb-4 flex">
+        <div class="col-lg-4"><label class="modal-label">Image URL</label></div>
+        <div class="col-lg-8"><input [(ngModel)]="productImage" class="modal-input" type="text" placeholder="URL" /></div>
+      </div>
+      <div class="col-lg-12 flex justify-center">
+        <button class="add-product-modal-btn" (click)="createProduct()">Add</button>
+      </div>
+    </div>
+    <span class="close-modal-btn" (click)="addingProduct = !addingProduct">X</span>
+  </div>
+</div>
